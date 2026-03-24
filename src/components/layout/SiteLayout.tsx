@@ -4,6 +4,7 @@ import { useLanguage } from '../../i18n';
 export function SiteLayout({ children }: PropsWithChildren) {
   const { language, setLanguage, content } = useLanguage();
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
+  const [isAvatarVisible, setIsAvatarVisible] = useState(true);
   const languageMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -45,7 +46,19 @@ export function SiteLayout({ children }: PropsWithChildren) {
     <>
       <header className="site-header">
         <a className="site-header__brand" href="#top" aria-label={content.brandAriaLabel}>
-          Nicolas
+          <span className="site-header__brand-text">Nicolas</span>
+          {isAvatarVisible ? (
+            <span className="site-header__avatar" aria-hidden="true">
+              <img
+                className="site-header__avatar-image"
+                src="/images/nicolas.jpg"
+                alt=""
+                decoding="async"
+                loading="eager"
+                onError={() => setIsAvatarVisible(false)}
+              />
+            </span>
+          ) : null}
         </a>
         <nav aria-label="Section navigation">
           <ul className="site-header__nav">
