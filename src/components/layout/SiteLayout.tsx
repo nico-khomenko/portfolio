@@ -51,7 +51,7 @@ export function SiteLayout({ children }: PropsWithChildren) {
             <span className="site-header__avatar" aria-hidden="true">
               <img
                 className="site-header__avatar-image"
-                src="/images/nicolas.jpg"
+                src={`${import.meta.env.BASE_URL}images/avatar.png`}
                 alt=""
                 decoding="async"
                 loading="eager"
